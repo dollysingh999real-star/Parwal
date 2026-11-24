@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-black: #020202;
+    --color-white: #FFFFFF;
+    --color-dim: #5C5C5C;
+    --color-navy-black: #0A1622;
+    --color-navy: #0F2A43;
+    --color-gold: #C9A227;
+    font-family: 'Archivo', system-ui, -apple-system, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #020202;
+    color: #FFFFFF;
+    overflow-x: clip;
+  }
+
+  body {
+    margin: 0;
+    background-color: #020202;
+    color: #FFFFFF;
+    font-family: 'Archivo', system-ui, -apple-system, sans-serif;
+    overflow-x: clip;
+    cursor: default;
+  }
+}
+
+.ease-editorial {
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes editorialFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-editorial-fade {
+  animation: editorialFadeIn 400ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes introLetterAssemble {
+  0% {
+    transform: translate3d(var(--ix, 0px), var(--iy, 0px), 0) rotate(var(--ir, 0deg)) scale(var(--is, 1.15));
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate3d(0px, 0px, 0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes introOverlayFadeOut {
+  0% {
+    background-color: #0F2A43;
+    opacity: 1;
+  }
+  100% {
+    background-color: #020202;
+    opacity: 0;
+  }
+}
+
+.animate-intro-letter {
+  animation: introLetterAssemble 1.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-intro-overlay {
+  animation: introOverlayFadeOut 0.4s cubic-bezier(0.16, 1, 0.3, 1) 1.6s forwards;
+}
+
+@keyframes kenBurnsContinuous4s {
+  0% {
+    transform: scale(1);
+  }
+  16.7% {
+    transform: scale(1.15);
+  }
+  35% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1.28);
+  }
+}
+
+@keyframes kenBurnsContinuous6s {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.15);
+  }
+  42% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1.28);
+  }
+}
+
+.animate-ken-burns-4s {
+  animation: kenBurnsContinuous4s 24s linear forwards;
+}
+
+.animate-ken-burns-6s {
+  animation: kenBurnsContinuous6s 30s linear forwards;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translate3d(0%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee-30s {
+  animation: marqueeScroll 30s linear infinite;
+}
+
+@keyframes spinClockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-20s {
+  animation: spinClockwise 20s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-editorial-fade,
+  .animate-intro-letter,
+  .animate-intro-overlay,
+  .animate-ken-burns-4s,
+  .animate-ken-burns-6s,
+  .animate-marquee-30s,
+  .animate-spin-20s {
+    animation: none !important;
+  }
+}
